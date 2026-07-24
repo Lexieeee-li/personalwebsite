@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const projects = [
@@ -182,12 +181,11 @@ export default function Home() {
               </div>
             </div>
             <figure className="portrait-frame reveal">
-              <Image
+              <img
                 src="/profile.jpg"
                 alt="个人照片占位，可替换"
-                width={1200}
-                height={1800}
-                priority
+                width="1200"
+                height="1800"
               />
               <figcaption>
                 <span>PORTRAIT / 2026</span>
