@@ -207,26 +207,62 @@ export default function Home() {
             <span>EXPERIENCE / 工作经历</span>
           </div>
           <div className="experience-intro reveal">
-            <p>Selected experience</p>
-            <h2>经历不是列表，<br />是持续累积的方法。</h2>
+            <figure className="academic-portrait">
+              <img
+                src="/academic-portrait.jpg"
+                alt="身穿学术服的个人肖像"
+                width="1024"
+                height="1536"
+              />
+              <figcaption>
+                <span>ACADEMIC PORTRAIT / 2026</span>
+                <span>可替换图片</span>
+              </figcaption>
+            </figure>
+            <div>
+              <p>Selected experience</p>
+              <h2>经历不是列表，<br />是持续累积的方法。</h2>
+            </div>
           </div>
-          <div className="experience-list">
-            {[
-              ["2025 — NOW", "公司 / 团队名称", "职位名称", "一句话说明你的职责与贡献范围。"],
-              ["2023 — 2025", "公司 / 团队名称", "职位名称", "一句话说明你的职责与贡献范围。"],
-              ["2021 — 2023", "学校 / 组织名称", "角色名称", "一句话说明这段经历带来的方法或能力。"],
-            ].map((item, index) => (
-              <article className="experience-row reveal" key={item[0]}>
-                <span className="row-no">0{index + 1}</span>
-                <span className="row-date">{item[0]}</span>
+          <div className="experience-split">
+            <aside className="academic-block reveal">
+              <div className="experience-block-title">
+                <span>ACADEMIC</span>
+                <strong>学术经历</strong>
+              </div>
+              <article className="academic-entry">
+                <span>2021 — 2023</span>
                 <div>
-                  <h3>{item[1]}</h3>
-                  <p>{item[2]}</p>
+                  <h3>学校 / 学院名称</h3>
+                  <p>专业或研究方向</p>
                 </div>
-                <p className="row-description">{item[3]}</p>
-                <span className="row-plus" aria-hidden="true">＋</span>
+                <p>一句话补充课程、研究或学术成果。</p>
               </article>
-            ))}
+            </aside>
+            <div className="work-block">
+              <div className="experience-block-title reveal">
+                <span>PROFESSIONAL</span>
+                <strong>工作经历</strong>
+              </div>
+              <div className="experience-list">
+                {[
+                  ["2025 — NOW", "公司 / 团队名称", "职位名称", "一句话说明你的职责与贡献范围。"],
+                  ["2023 — 2025", "公司 / 团队名称", "职位名称", "一句话说明你的职责与贡献范围。"],
+                  ["2022 — 2023", "公司 / 团队名称", "职位名称", "一句话说明你参与的项目与主要成果。"],
+                ].map((item, index) => (
+                  <article className="experience-row reveal" key={item[0]}>
+                    <span className="row-no">0{index + 1}</span>
+                    <span className="row-date">{item[0]}</span>
+                    <div>
+                      <h3>{item[1]}</h3>
+                      <p>{item[2]}</p>
+                    </div>
+                    <p className="row-description">{item[3]}</p>
+                    <span className="row-plus" aria-hidden="true">＋</span>
+                  </article>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 

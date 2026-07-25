@@ -490,20 +490,118 @@ button {
 
 .experience-intro {
   display: grid;
-  grid-template-columns: 0.55fr 1.45fr;
-  gap: 30px;
+  grid-template-columns: minmax(190px, 0.48fr) 1.52fr;
+  gap: 3vw;
+  align-items: end;
   padding: 5vw 0 7vw;
 }
 
 .experience-intro p {
-  margin: 0;
+  margin: 0 0 2vw;
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.experience-list {
+.academic-portrait {
+  position: relative;
+  width: min(100%, 370px);
+  aspect-ratio: 3 / 4;
+  margin: 0;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.academic-portrait::after {
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(243, 237, 227, 0.62);
+  content: "";
+  pointer-events: none;
+}
+
+.academic-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 22%;
+  filter: saturate(0.68) contrast(1.04);
+  transition: filter 0.5s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.academic-portrait:hover img {
+  filter: saturate(0.92) contrast(1);
+  transform: scale(1.025);
+}
+
+.academic-portrait figcaption {
+  position: absolute;
+  z-index: 2;
+  right: 16px;
+  bottom: 14px;
+  left: 16px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--paper);
+  font-size: 0.54rem;
+  letter-spacing: 0.08em;
+}
+
+.experience-split {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.38fr) 1.62fr;
+  gap: 3vw;
+  align-items: start;
+}
+
+.experience-block-title {
+  display: flex;
+  min-height: 60px;
+  align-items: center;
+  justify-content: space-between;
   border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.experience-block-title span {
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+}
+
+.experience-block-title strong {
+  font-size: 0.88rem;
+}
+
+.academic-entry {
+  padding: 22px 0 28px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.academic-entry > span {
+  display: block;
+  margin-bottom: 44px;
+  font-size: 0.66rem;
+}
+
+.academic-entry h3 {
+  margin: 0 0 6px;
+  font-size: clamp(1.05rem, 1.45vw, 1.4rem);
+}
+
+.academic-entry div p,
+.academic-entry > p {
+  margin: 0;
+  font-size: 0.7rem;
+  line-height: 1.45;
+}
+
+.academic-entry > p {
+  max-width: 300px;
+  margin-top: 28px;
+}
+
+.experience-list {
+  border-top: 0;
 }
 
 .experience-row {
@@ -574,32 +672,21 @@ button {
 }
 
 .project-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 2.5vw 1.2vw;
+  display: block;
 }
 
 .project-card {
   display: block;
+  width: 100%;
 }
 
-.project-1 {
-  grid-column: 1 / span 7;
-}
-
-.project-2 {
-  grid-column: 8 / span 5;
-  padding-top: 9vw;
-}
-
-.project-3 {
-  grid-column: 3 / span 7;
-  padding-top: 2vw;
+.project-card + .project-card {
+  margin-top: 4vw;
 }
 
 .project-visual {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 7;
   overflow: hidden;
   color: var(--paper);
   background: var(--ink);
@@ -635,7 +722,7 @@ button {
   left: -0.04em;
   overflow: hidden;
   font-family: Impact, "Arial Black", Arial, sans-serif;
-  font-size: clamp(4rem, 8.5vw, 10rem);
+  font-size: clamp(5rem, 11.5vw, 13rem);
   line-height: 0.78;
   letter-spacing: -0.05em;
   white-space: nowrap;
@@ -1116,8 +1203,7 @@ button {
   }
 
   .about-grid,
-  .projects-heading,
-  .experience-intro {
+  .projects-heading {
     grid-template-columns: 1fr;
   }
 
@@ -1139,6 +1225,14 @@ button {
 
   .experience-row {
     grid-template-columns: 38px 0.65fr 1fr 34px;
+  }
+
+  .experience-intro {
+    grid-template-columns: minmax(190px, 0.58fr) 1.42fr;
+  }
+
+  .experience-split {
+    grid-template-columns: minmax(210px, 0.48fr) 1.52fr;
   }
 
   .row-description {
@@ -1204,8 +1298,22 @@ button {
   }
 
   .experience-intro {
+    grid-template-columns: 1fr;
     gap: 40px;
     padding: 56px 0;
+  }
+
+  .academic-portrait {
+    width: min(78vw, 360px);
+  }
+
+  .experience-intro p {
+    margin-bottom: 22px;
+  }
+
+  .experience-split {
+    grid-template-columns: 1fr;
+    gap: 48px;
   }
 
   .experience-row {
@@ -1224,7 +1332,11 @@ button {
 
   .project-card {
     padding-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 0;
+  }
+
+  .project-card + .project-card {
+    margin-top: 30px;
   }
 
   .project-visual {
