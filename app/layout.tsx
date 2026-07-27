@@ -15,20 +15,20 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: base,
     title: {
-      default: "个人作品集 · Strategy & Design",
-      template: "%s · 个人作品集",
+      default: "李子园 · 产品设计作品集",
+      template: "%s · 李子园",
     },
-    description: "一个以策略、体验与叙事为线索的个人作品集网站。",
+    description: "李子园的产品设计作品集，聚焦产品策略、用户研究、交互设计与系统化解决方案。",
     openGraph: {
-      title: "Selected Work — 2026",
-      description: "Portfolio / Strategy / Design",
+      title: "李子园 · Product Design Portfolio",
+      description: "产品策略、用户研究、交互设计与系统化解决方案。",
       type: "website",
-      images: [{ url: socialImage, width: 1200, height: 630, alt: "Selected Work — 2026" }],
+      images: [{ url: socialImage, width: 1200, height: 630, alt: "李子园 · 产品设计作品集" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Selected Work — 2026",
-      description: "Portfolio / Strategy / Design",
+      title: "李子园 · Product Design Portfolio",
+      description: "产品策略、用户研究、交互设计与系统化解决方案。",
       images: [socialImage],
     },
   };

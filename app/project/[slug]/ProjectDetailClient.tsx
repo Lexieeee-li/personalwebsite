@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import AiHardwareCaseStudy from "./AiHardwareCaseStudy";
+import CathayCaseStudy from "./CathayCaseStudy";
+import HeadphoneCycleCaseStudy from "./HeadphoneCycleCaseStudy";
 
 export type ProjectData = {
   slug: string;
@@ -28,6 +31,18 @@ export default function ProjectDetailClient({ project }: { project: ProjectData 
     );
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
+    const chartObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle("is-chart-visible", entry.isIntersecting);
+        });
+      },
+      { threshold: 0.2 },
+    );
+    document
+      .querySelectorAll(".headphone-unused")
+      .forEach((el) => chartObserver.observe(el));
+
     const cursor = document.querySelector<HTMLElement>(".custom-cursor");
     const onMove = (event: MouseEvent) => {
       if (!cursor) return;
@@ -41,6 +56,7 @@ export default function ProjectDetailClient({ project }: { project: ProjectData 
     window.addEventListener("mousemove", onMove);
     return () => {
       observer.disconnect();
+      chartObserver.disconnect();
       window.removeEventListener("mousemove", onMove);
     };
   }, []);
@@ -84,9 +100,17 @@ export default function ProjectDetailClient({ project }: { project: ProjectData 
         <a className="detail-back" href="/#projects" onClick={(event) => navigate(event, "/#projects")}>
           <span>←</span> 返回项目列表
         </a>
-        <span>SELECTED WORK / 2026</span>
+        <span>SELECTED WORK / {project.slug === "ai-hardware" ? "2025" : "2026"}</span>
       </header>
 
+      {project.slug === "ai-hardware" ? (
+        <AiHardwareCaseStudy project={project} navigate={navigate} />
+      ) : project.slug === "cathay-pacific" ? (
+        <CathayCaseStudy project={project} navigate={navigate} />
+      ) : project.slug === "headphone-cycle" ? (
+        <HeadphoneCycleCaseStudy project={project} navigate={navigate} />
+      ) : (
+        <>
       <section className={`detail-hero ${project.tone}`}>
         <div className="detail-kicker">
           <span>PROJECT ({project.number})</span>
@@ -161,6 +185,8 @@ export default function ProjectDetailClient({ project }: { project: ProjectData 
         </div>
         <span aria-hidden="true">↗</span>
       </a>
+        </>
+      )}
     </main>
   );
 }
