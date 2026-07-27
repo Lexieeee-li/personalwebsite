@@ -5,6 +5,18 @@ import AiHardwareCaseStudy from "./AiHardwareCaseStudy";
 import CathayCaseStudy from "./CathayCaseStudy";
 import HeadphoneCycleCaseStudy from "./HeadphoneCycleCaseStudy";
 
+function publicPath(href: string) {
+  if (
+    window.location.hostname.endsWith(".github.io") &&
+    window.location.pathname.startsWith("/personalwebsite") &&
+    href.startsWith("/")
+  ) {
+    return `/personalwebsite${href}`;
+  }
+
+  return href;
+}
+
 export type ProjectData = {
   slug: string;
   number: string;
@@ -66,7 +78,7 @@ export default function ProjectDetailClient({ project }: { project: ProjectData 
     event.preventDefault();
     setLeaving(true);
     window.setTimeout(() => {
-      window.location.href = href;
+      window.location.href = publicPath(href);
     }, 420);
   };
 

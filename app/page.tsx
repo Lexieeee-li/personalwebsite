@@ -2,6 +2,19 @@
 
 import { useEffect, useState } from "react";
 
+function publicPath(href: string) {
+  if (
+    typeof window !== "undefined" &&
+    window.location.hostname.endsWith(".github.io") &&
+    window.location.pathname.startsWith("/personalwebsite") &&
+    href.startsWith("/")
+  ) {
+    return `/personalwebsite${href}`;
+  }
+
+  return href;
+}
+
 const projects = [
   {
     slug: "ai-hardware",
@@ -243,7 +256,7 @@ export default function Home() {
     event.preventDefault();
     setLeaving(true);
     window.setTimeout(() => {
-      window.location.href = `/project/${slug}`;
+      window.location.href = publicPath(`/project/${slug}`);
     }, 480);
   };
 
